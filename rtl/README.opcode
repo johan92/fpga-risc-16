@@ -1,0 +1,37 @@
+Opcode List:
+
+RRR-type:
+  
+  | opcode | reg A | reg B | rsvd | reg C |
+
+  ADD:
+    R[ reg A ] <= R[ reg B ] + R[ reg C ]
+  
+  SUB:
+    R[ reg A ] <= R[ reg B ] - R[ reg C ]
+  
+  AND:
+    R[ reg A ] <= R[ reg B ] & R[ reg C ]
+  
+  OR:
+    R[ reg A ] <= R[ reg B ] | R[ reg C ]
+  
+  XOR:
+    R[ reg A ] <= R[ reg B ] ^ R[ reg C ]
+
+RRI-type:
+  | opcode | reg A | reg B | imm ( signed ) [5:0] |
+
+  ADDI:
+    R[ reg A ] <= R[ reg B ] + imm
+
+  // load word from mem
+  LW:
+    R[ reg A ] <= Mem[ R[ reg B ] + imm ]
+  
+  // store word to mem
+  SW:
+    Mem[ R[ reg B ] + imm ] <= R[ reg A ] 
+
+RI-type:
+

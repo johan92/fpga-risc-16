@@ -1,0 +1,11 @@
+top_tb.sv
+alu_pkg.sv
+risc16_pkg.sv
+
+cpu_regs.sv
+cpu_top.sv
+ram.v
+stage_EX.sv
+stage_ID.sv
+stage_IF.sv
+stage_MEM.sv
