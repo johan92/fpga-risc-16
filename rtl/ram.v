@@ -16,6 +16,14 @@ module dp_ram
 // Declare the RAM variable
 reg [DATA_WIDTH-1:0] ram[2**ADDR_WIDTH-1:0];
 
+initial
+  begin
+    for( int i = 0; i < 2**ADDR_WIDTH; i++ )
+      begin
+        ram[i] = '0;
+      end
+  end
+
 always @ (posedge clk)
   begin
     // Write

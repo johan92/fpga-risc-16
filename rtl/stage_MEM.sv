@@ -22,7 +22,7 @@ always_ff @( posedge clk_i or posedge rst_i )
 
 always_comb
   begin
-    task_o.wr_data      = mem_task_d1.id.res.wb_mem_data_sel ? ( read_data ) : ( mem_task_d1.alu_res );
+    task_o.wr_data      = mem_task_d1.id_res.wb_mem_data_sel ? ( read_data ) : ( mem_task_d1.alu_res );
     task_o.reg_addr     = mem_task_d1.id_res.wb_reg_addr;
     task_o.wr_en        = mem_task_d1.id_res.wb_wr_en;
   end
@@ -36,9 +36,9 @@ dp_ram
 ) data_mem (
   .clk                                    ( clk_i                 ),
 
-  .data                                   ( task_i.mem_wr_data    ),
+  .data                                   ( task_i.id_res.mem_wr_data    ),
   .write_addr                             ( task_i.alu_res        ),
-  .we                                     ( task_i.mem_wr_en      ),
+  .we                                     ( task_i.id_res.mem_wr_en      ),
 
   .read_addr                              ( task_i.alu_res        ),
 

@@ -9,3 +9,4 @@ stage_EX.sv
 stage_ID.sv
 stage_IF.sv
 stage_MEM.sv
+hazard_detection.sv

@@ -12,7 +12,7 @@ module cpu_regs(
 );
 localparam REGS_CNT = 2 ** REG_ADDR_WIDTH;
 
-logic [REGS_CNT-1:0][REG_DATA_WIDTH-1:0] regs;
+logic [REGS_CNT-1:0][REG_DATA_WIDTH-1:0] regs = '0;
 
 always_ff @( posedge clk_i or posedge rst_i )
   if( rst_i )
@@ -30,5 +30,21 @@ always_comb
         rd_data_o[i] = regs[ rd_addr_i[i] ];
       end
   end
+
+clocking cb @( posedge clk_i );
+endclocking
+
+initial
+  begin
+    forever
+      begin
+        @cb;
+        if( task_i.wr_en )
+          begin
+            $display("%t | WR: R%1d %4x", $time(), task_i.reg_addr, task_i.wr_data );
+          end
+      end
+  end
+
 
 endmodule
